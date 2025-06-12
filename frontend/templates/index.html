@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FL Predictor</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>Privacy Preserving Federated Image Classification</h1>
+
+    <form id="predictForm" action="/predict" method="POST" enctype="multipart/form-data">
+      <label for="dataset">Select Dataset:</label>
+      <select name="dataset" id="dataset" required>
+        <option value="">--Choose--</option>
+        <option value="mnist">MNIST</option>
+        <option value="fashionmnist">FashionMNIST</option>
+      </select>
+
+      <label for="clients">Number of Clients:</label>
+      <select name="clients" id="clients" required>
+        <option value="">--Choose--</option>
+        <option value="1">1</option>
+        <option value="5">5</option>
+        <option value="10">10</option>
+      </select>
+
+      <label for="image">Upload Image:</label>
+      <input type="file" name="image" id="image" accept="image/png, image/jpeg" required>
+
+      <button type="submit">Predict</button>
+    </form>
+  </div>
+</body>
+</html>

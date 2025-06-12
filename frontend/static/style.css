@@ -1,0 +1,75 @@
+
+body {
+  font-family: Arial, sans-serif;
+  background-image: url("background.jpg");  /* Place this image in your static folder */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  padding: 40px;
+  color: white;
+}
+
+/* Specific styling for the result page */
+.result-page {
+  background-position: center 20%; /* Shift the background image down for result page */
+}
+
+
+.container {
+  width: 100%;  /* Full width of the page */
+  max-width: 500px;  /* Adjust container size */
+  padding: 30px;
+  background: rgba(0, 0, 0, 0.6);  /* dark transparent background */
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  margin-left: 0;  /* Align container to the left */
+  margin-right: 0;  /* Remove any right margin */
+}
+
+h1 {
+  text-align: left;  /* Align title to the left */
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align items to the left */
+  width: 100%;  /* Ensure form takes full width */
+}
+
+label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+  color: white;
+}
+
+select,
+input[type="file"],
+button {
+  width: 100%;  /* Full width of form */
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+#result {
+  margin-top: 20px;
+  font-size: 18px;
+  text-align: left;  /* Align result text to the left */
+  color: #fff;
+}

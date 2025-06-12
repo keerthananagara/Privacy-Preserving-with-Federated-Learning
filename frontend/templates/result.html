@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prediction Result</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="result-page">
+  <div class="container">
+    <h1>Prediction Result</h1>
+    <div id="predictionResult">
+      <p>The image belongs to this class: <strong>{{ prediction }}</strong></p>
+    </div>
+    <a href="/">Go back</a>
+  </div>
+
+  <!-- New container below prediction -->
+  <div class="container">
+    <h2>Select Dataset</h2>
+    <label for="dataset-select">Choose Dataset:</label>
+    <select id="dataset-select">
+      <option value="">--Choose Dataset--</option>
+      <option value="mnist">MNIST</option>
+      <option value="fashionmnist">FashionMNIST</option>
+    </select>
+
+    <div id="dataset-images" class="dataset-images">
+      <!-- Images will be dynamically shown here -->
+    </div>
+  </div>
+
+  <script>
+    // Function to load images based on the selected dataset
+    function loadImages(dataset) {
+      const datasetImagesDiv = document.getElementById('dataset-images');
+      datasetImagesDiv.innerHTML = ''; // Clear previous images
+
+      let images = [];
+      
+      if (dataset === 'mnist') {
+        images = ['mi1.jpg','mi2.png']; // Replace with actual MNIST image paths
+      } else if (dataset === 'fashionmnist') {
+        images = ['fi1.jpg','fi2.png']; // Replace with actual FashionMNIST image paths
+      }
+
+      // Display images
+      images.forEach((image) => {
+        const imgElement = document.createElement('img');
+        imgElement.src = `/static/images/${image}`;
+        imgElement.alt = image;
+        imgElement.classList.add('dataset-image');
+        datasetImagesDiv.appendChild(imgElement);
+      });
+    }
+
+    // Event listener for dataset selection
+    document.getElementById('dataset-select').addEventListener('change', (e) => {
+      const selectedDataset = e.target.value;
+      if (selectedDataset) {
+        loadImages(selectedDataset);
+      } else {
+        document.getElementById('dataset-images').innerHTML = ''; // Clear images if no dataset selected
+      }
+    });
+  </script>
+
+  <style>
+    /* Additional styling for the dataset selection container */
+    .container {
+      max-width: 500px;
+      margin: 50px auto;
+      background: rgba(0, 0, 0, 0.6);  /* dark transparent background */
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+      color: white;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    #dataset-select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .dataset-images {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .dataset-image {
+      width: 100px;
+      height: 100px;
+      margin: 10px;
+    }
+
+    .dataset-image:hover {
+      transform: scale(1.1);
+      transition: transform 0.3s ease;
+    }
+  </style>
+  <style>
+    .dataset-image {
+      width: 500px;  /* Increase width */
+      height: auto;  /* Keep aspect ratio */
+      margin: 20px auto;
+      display: block;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    }
+  
+    .dataset-image:hover {
+      transform: scale(1.05);
+      transition: transform 0.3s ease;
+    }
+  </style>  
+</body>
+</html>
